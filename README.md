@@ -8,14 +8,14 @@ The lessons assume you have built a skill with the [Alexa Skills Kit](https://de
 
 If you are new to Alexa, first complete the [tutorial to build the Flash Cards sample skill](https://developer.amazon.com/public/community/post/Tx2YNDI2WP6O21S/New-Alexa-Skills-Kit-Template-Step-by-Step-Guide-to-Build-a-Flash-Cards-Skill) .
 
-### The skill
+### The skill - State Pop
 Let's assume that you have an Alexa Skill that expects the user to say the name of a US State.  You can design the skill using the AMAZON.US_STATE built-in slot type.
 The user says "Florida" and the Alexa responds with "the population of Florida is twenty million".  The skill will send an Intent and Slot to your code with the following structure:
 
 * Intent: **StateRequestIntent**
 * Slot: **usstate**   (Florida)
 
-Go ahead and setup your skill using the Interaction Model found in:
+Go ahead and setup your skill using invocation name "state pop", and use the Interaction Model found in:
 * [speechAssets/IntentSchema.json](./SpeechAssets/IntentSchema.json)
 * [speechAssets/SampleUtterances.txt](./SpeechAssets/SampleUtterances.txt)
 
@@ -40,10 +40,10 @@ Let's assume we chose the CallService/index.js example to model a call to an ext
 In a new browser tab, navigate to the [AWS Lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/) and create a new function.
 Call the function "CallService" and paste in the code from index.js to the code window.
 
-Note: If you have selected the S3 example, you will need to select or create a special "role" in the Lambda Function Handler and Role section just below your code window.  Choose existing role "lambda_s3_exec_role". Otherwise, choose the default role of "lambda_basic_execution".
+* Note: If you have selected the S3 example, you will need to select or create a special "role" in the Lambda Function Handler and Role section just below your code window.  Choose existing role "lambda_s3_exec_role". Otherwise, choose the default role of "lambda_basic_execution".
 
 
-Take a look at the code to see the relevant Javascript sections that perform the call to the external web service:
+For our CallService example, take a look through the code to see the relevant Javascript sections that perform the call to the external web service.
 
 ```javascript
 var https = require('https');
@@ -84,7 +84,8 @@ var https = require('https');
 ```
 
 A best-practice to quickly build and test special functions like this is to install Node.JS on your laptop, and write a local testing script so that you can quickly test and debug your logic.
-See [tests/test_rest.js](./tests/test_rest.js).  Setting up your local Node.JS development environment will be fully covered in an upcoming blog post.
+See [tests/test_rest.js](./tests/test_rest.js).  You can run this test by opening a command prompt, navigate to the tests folder and typeing in **node ./test_rest.js**
+Setting up your local Node.JS development environment will be fully covered in an upcoming blog post.
 
 ### Complete the Skill
 
